@@ -1,0 +1,18 @@
+"*":
+  "exception-reporting":
+    userId: "b536d13a-f4c6-8aa3-6761-17d2c4add6e3"
+  welcome:
+    showOnStartup: false
+  core:
+    autoHideMenuBar: true
+  editor:
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  "highlight-selected": {}
+  minimap: {}
+  "file-icons": {}
+  "git-plus": {}
