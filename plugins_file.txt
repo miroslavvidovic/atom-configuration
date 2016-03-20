@@ -1,0 +1,13 @@
+autoclose-html
+color-picker
+emmet
+file-icons
+git-log
+git-plus
+git-status
+highlight-selected
+linter
+minimap
+todo-show
+seti-ui
+atom-monokai
