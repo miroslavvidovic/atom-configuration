@@ -14,30 +14,53 @@
 # -------------------------------------------------------
 # Script:
 
+os_version=$1
+
 separator(){
   echo "-----------------------------------------------------------------------"
   echo ""
 }
 
-# Download atom editor
-download_atom(){
-  echo "--- Downloading atom editor ---"
+# Download atom editor for ubuntu
+download_atom_ubuntu(){
+  echo "--- Downloading atom editor DEB file ---"
   separator
   wget https://atom.io/download/deb -O atom_editor.deb
 }
 
-# Install atom from the downloaded file
-install_atom(){
-  echo "--- Installing atom editor ---"
+# Download atom editor for fedora
+download_atom_fedora(){
+  echo "--- Downloading atom editor RPM file ---"
+  separator
+  wget https://atom.io/download/rpm -O atom_editor.rpm
+}
+
+# Install atom on ubuntu
+install_atom_ubuntu(){
+  echo "--- Installing atom editor DEB ---"
   separator
   sudo dpkg -i atom_editor.deb
 }
 
-# Remove the downloaded file
-remove_file(){
-  echo "--- Removing the downloaded file ---"
+# Install atom on fedora
+install_atom_fedora(){
+  echo "--- Installing atom editor RPM ---"
+  separator
+  su -c 'dnf install atom_editor.rpm'
+}
+
+# Remove the downloaded deb file
+remove_file_ubuntu(){
+  echo "--- Removing the downloaded DEB file ---"
   separator
   rm atom_editor.deb
+}
+
+# Remove the downloaded rpm file
+remove_file_fedora(){
+  echo "--- Removing the downloaded RMP file ---"
+  separator
+  rm atom_editor.rpm
 }
 
 # Copy conf files to atom directory
@@ -58,11 +81,23 @@ done
 }
 
 main_function(){
-  download_atom
-  install_atom
-  remove_file
-  copy_conf_files
-  install_plugins_from_file
+  if [ $os_version = "--ubuntu" ]; then
+    download_atom_ubuntu
+    install_atom_ubuntu
+    remove_file_ubuntu
+    copy_conf_files
+    install_plugins_from_file
+  elif [ $os_version = "--fedora" ]; then
+    download_atom_fedora
+    install_atom_fedora
+    remove_file_fedora
+    copy_conf_files
+    install_plugins_from_file
+  else
+    echo "Unknown os version."
+    echo "Use --ubuntu or --fedora when running the script."
+  fi
+
 }
 
 main_function
