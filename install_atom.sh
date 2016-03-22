@@ -17,8 +17,8 @@
 os_version=$1
 
 separator(){
-  echo "-----------------------------------------------------------------------"
-  echo ""
+  printf "%0.s-" {1..80}
+  printf "\n"
 }
 
 # Download atom editor for ubuntu
