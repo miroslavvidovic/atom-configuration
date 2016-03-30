@@ -70,13 +70,23 @@ copy_conf_files(){
   cp config.cson keymap.cson snippets.cson styles.less ~/.atom
 }
 
-# Install plugins from text file
+# Install plugins from a text file
+# If a plugin name starts with # that means that the plugin is currently disabled
+# and the script won't install the plugin. For total removal just delete the
+# plugin from the list.
 install_plugins_from_file(){
   echo "--- Installing plugins/packages ---"
   separator
 cat plugins_file.txt | while read plugin
 do
-  apm install $plugin
+  if [[ $plugin == \#* ]] ; then
+    echo "Skiping: "
+    echo $plugin
+  else
+    echo "Installing: "
+    echo $plugin
+    apm install $plugin
+  fi
 done
 }
 
