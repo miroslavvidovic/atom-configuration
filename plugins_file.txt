@@ -11,7 +11,7 @@ minimap
 todo-show
 seti-ui
 atom-monokai
-autocmplete-python
+autocomplete-python
 php-twig
 linter-php
 #autocomplete-php
