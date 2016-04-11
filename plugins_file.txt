@@ -9,7 +9,7 @@ highlight-selected
 linter
 minimap
 todo-show
-seti-ui
+#seti-ui
 atom-monokai
 autocomplete-python
 php-twig
@@ -18,3 +18,4 @@ linter-php
 php-debug
 terminal-plus
 atom-beautify
+atom-bootstrap3
