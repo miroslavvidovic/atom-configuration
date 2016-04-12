@@ -19,3 +19,5 @@ php-debug
 terminal-plus
 atom-beautify
 atom-bootstrap3
+pigments
+browser-plus
