@@ -21,3 +21,6 @@ atom-beautify
 atom-bootstrap3
 pigments
 browser-plus
+git-time-machine
+nucleus-dark-ui
+gruvbox-plus-syntax

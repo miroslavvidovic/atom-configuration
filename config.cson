@@ -1,18 +1,29 @@
 "*":
-  "exception-reporting":
-    userId: "b536d13a-f4c6-8aa3-6761-17d2c4add6e3"
-  welcome:
-    showOnStartup: false
+  "atom-beautify":
+    general:
+      _analyticsUserId: "974aab07-ed9a-46da-8ab1-7df9f8b3ca42"
   core:
     autoHideMenuBar: true
+    packagesWithKeymapsDisabled: [
+      "autoclose-html"
+    ]
+    themes: [
+      "nucleus-dark-ui"
+      "gruvbox-plus-syntax"
+    ]
   editor:
+    fontSize: 13
     invisibles: {}
     scrollPastEnd: true
     showIndentGuide: true
+  "exception-reporting":
+    userId: "b536d13a-f4c6-8aa3-6761-17d2c4add6e3"
+  "file-icons": {}
+  "git-plus": {}
+  "highlight-selected": {}
+  minimap: {}
   "tree-view":
     hideIgnoredNames: true
     hideVcsIgnoredFiles: true
-  "highlight-selected": {}
-  minimap: {}
-  "file-icons": {}
-  "git-plus": {}
+  welcome:
+    showOnStartup: false
