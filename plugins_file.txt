@@ -21,4 +21,7 @@ browser-plus
 git-time-machine
 nucleus-dark-ui
 gruvbox-plus-syntax
-vim-mode
+vim-mode-plus
+script
+linter-shellcheck
+atom-fuzzy-grep

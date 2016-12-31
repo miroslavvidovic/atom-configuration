@@ -33,3 +33,7 @@
 
 'atom-workspace atom-text-editor:not([mini])':
   'ctrl-shift-c': 'editor:toggle-line-comments'
+
+# Vim ack equivalent
+'atom-workspace':
+  'ctrl-alt-a': 'fuzzy-grep:toggle'
