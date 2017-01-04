@@ -37,3 +37,8 @@
 # Vim ack equivalent
 'atom-workspace':
   'ctrl-alt-a': 'fuzzy-grep:toggle'
+
+# vim-mode-plus keybindings
+'atom-text-editor.vim-mode-plus.normal-mode':
+  'č a': 'fuzzy-grep:toggle'
+  'č n': 'tree-view:toggle'
