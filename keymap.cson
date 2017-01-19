@@ -42,3 +42,5 @@
 'atom-text-editor.vim-mode-plus.normal-mode':
   'č a': 'fuzzy-grep:toggle'
   'č n': 'tree-view:toggle'
+  'č t': 'terminal-plus:toggle'
+  'č c': 'editor:toggle-line-comments'
