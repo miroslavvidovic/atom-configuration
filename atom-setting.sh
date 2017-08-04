@@ -1,16 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# -------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Info:
-# 	Miroslav Vidovic
-# 	install_atom.sh
-# 	20.03.2016.-15:20:30
-# -------------------------------------------------------
+#   author:    Miroslav Vidovic
+#   file:      atom-settings.sh
+#   created:   20.03.2016.-15:20:30
+#   revision:  04.08.2017.
+#   version:   1.1
+# -----------------------------------------------------------------------------
+# Requirements:
+#
 # Description:
-#   Script to manage atom editor plugins and configuration.
+#   Manage atom editor plugins and configuration.
 # Usage:
-#   bash install_atom.sh
-# -------------------------------------------------------
+#   atom_settings.sh
+# -----------------------------------------------------------------------------
 # Script:
 
 # Separator line
@@ -35,17 +39,19 @@ copy_conf_files(){
 install_plugins_from_list(){
   echo "--- Installing plugins/packages ---"
   separator
-  cat $1 | while read plugin
+  while read plugin
   do
     if [[ $plugin == \#* ]] ; then
       echo "Skipping: "
-      echo $plugin
+      echo "$plugin"
+    elif [[ $plugin == \$* ]]; then
+      continue
     else
       echo "Installing: "
-      echo $plugin
-      apm install $plugin
+      echo "$plugin"
+      apm install "$plugin"
     fi
-  done
+  done < "$1"
 }
 
 # Get the difference between installed and listed packages and store them
@@ -54,11 +60,11 @@ diff_installed_and_listed_plugins(){
   # Get the list of installed plugins
   tmp_installed_plugins=$(mktemp)
   # write plugin names to temp file but skip the readme file
-  ls ~/.atom/packages | grep -v README.md > $tmp_installed_plugins
+  ls ~/.atom/packages -I README.md > "$tmp_installed_plugins"
 
   # Sort the plugins file for comparison
   tmp_selected_plugins=$(mktemp)
-  cat $plugins_list | sort > $tmp_selected_plugins
+  < "$plugins_list" sort > "$tmp_selected_plugins"
 
   # Compare list of installed packages and a list of selected packages
   # (plugins_list.txt)
@@ -66,7 +72,7 @@ diff_installed_and_listed_plugins(){
   # comm command is used with flags -13:
   # -3 suppress lines that appear in both files
   # -1 suppress lines that are unique to file 1
-  comm -13 $tmp_installed_plugins $tmp_selected_plugins > $tmp_to_be_installed
+  comm -13 "$tmp_installed_plugins" "$tmp_selected_plugins" > "$tmp_to_be_installed"
 }
 
 main(){
@@ -79,7 +85,7 @@ main(){
   # install only those packages listed in the txt file but not
   # already installed
   diff_installed_and_listed_plugins
-  install_plugins_from_list $tmp_to_be_installed
+  install_plugins_from_list "$tmp_to_be_installed"
 }
 
 main
